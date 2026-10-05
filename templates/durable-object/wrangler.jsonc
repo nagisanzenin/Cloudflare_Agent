@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "durable-object",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "durable_objects": {
+    "bindings": [{ "name": "COUNTER", "class_name": "Counter" }]
+  },
+  // Declares the class and its storage. Removing an entry or marking it "deleted" destroys its data.
+  "exports": {
+    "Counter": { "type": "durable-object", "storage": "sqlite" }
+  }
+}

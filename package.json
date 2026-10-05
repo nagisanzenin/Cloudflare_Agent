@@ -1,0 +1,18 @@
+{
+  "name": "cloudflare-agent",
+  "private": true,
+  "description": "Agent-facing handbook, runbooks and verified templates for setting up and operating projects on Cloudflare.",
+  "workspaces": [
+    "templates/*"
+  ],
+  "scripts": {
+    "verify": "bash scripts/verify-templates.sh"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "wrangler": "^4.147.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

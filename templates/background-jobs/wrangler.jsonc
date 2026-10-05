@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "background-jobs",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "queues": {
+    "producers": [{ "binding": "JOBS", "queue": "background-jobs" }],
+    "consumers": [
+      {
+        "queue": "background-jobs",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+        "dead_letter_queue": "background-jobs-dlq"
+      }
+    ]
+  },
+  "workflows": [
+    { "name": "signup-workflow", "binding": "SIGNUP", "class_name": "SignupWorkflow" }
+  ],
+  "triggers": { "crons": ["0 3 * * *"] }
+}

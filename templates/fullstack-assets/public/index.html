@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>fullstack-assets</title>
+  </head>
+  <body>
+    <h1>Static page served by Workers</h1>
+    <pre id="out">calling /api/hello ...</pre>
+    <script>
+      fetch("/api/hello")
+        .then((r) => r.json())
+        .then((data) => (document.getElementById("out").textContent = JSON.stringify(data, null, 2)))
+        .catch((err) => (document.getElementById("out").textContent = String(err)));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "worker-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  // No resource IDs yet: local dev does not need them. The README shows how to create the
+  // real resources and have Wrangler write the IDs into this file.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "worker-api-db", "migrations_dir": "migrations" }
+  ],
+  "kv_namespaces": [{ "binding": "CACHE" }]
+}
